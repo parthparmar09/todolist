@@ -4,14 +4,18 @@ let taskInfo = document.querySelector("#taskInfo");
 let taskTime = document.querySelector("#taskTime");
 let tBody = document.querySelector("#tBody");
 var tasks = JSON.parse(localStorage.getItem("tasks"));
+var audio = new Audio('./notification.mp3')
 
 let showTasks = () => { 
     tasks.forEach((element) => {
     let task = document.createElement("tr");
     task.innerHTML = `<td>${element.info}</td><td>${element.time}</td><td><button class="btn btn-secondary" id="t${element.id}"onclick="removeThis(this.id)" >remove</button></td>`;
     tBody.appendChild(task);
+
   });
 };
+
+
 
 if(tasks != null){
     showTasks()
@@ -70,6 +74,7 @@ let checkTask = () => {
         let time = `${date.getHours()}:${date.getMinutes()}`
         tasks.forEach(element => {
             if(element.time == time){
+              audio.play()
                 alert(`Time for : ${element.info}`)
             }
         });
