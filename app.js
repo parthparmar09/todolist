@@ -78,7 +78,7 @@ let checkTask = () => {
                 alert(`Time for : ${element.info}`)
             }
         });
-    }, 60000);
+    }, 60*1000);
 }
 checkTask()
 addBtn.addEventListener("click", (e) => {
